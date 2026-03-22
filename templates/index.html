@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Digital</title>
+    <style>
+        /* Estilos globais para deixar a página moderna */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* O "cartão" da calculadora */
+        .calculadora-card {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #343a40;
+            margin-bottom: 25px;
+            margin-top: 0;
+        }
+
+        /* Estilizando os campos de preenchimento e seleção */
+        input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        /* O botão de calcular */
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0b5ed7;
+        }
+
+        /* A caixa onde o resultado aparece */
+        .resultado-box {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 5px solid #198754;
+            border-radius: 4px;
+            color: #212529;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculadora-card">
+        <h2>Calculadora Digital</h2>
+        
+        <form method="POST">
+            <input type="number" name="num1" step="any" placeholder="Digite o 1º número" required>
+            
+            <select name="operacao" required>
+                <option value="" disabled selected>Escolha a operação...</option>
+                <option value="1">Soma (+)</option>
+                <option value="2">Subtração (-)</option>
+                <option value="3">Multiplicação (x)</option>
+                <option value="4">Divisão (÷)</option>
+                <option value="5">Exponenciação (^)</option>
+            </select>
+
+            <input type="number" name="num2" step="any" placeholder="Digite o 2º número" required>
+
+            <button type="submit">Calcular</button>
+        </form>
+
+        {% if resultado is not none %}
+            <div class="resultado-box">
+                Resultado: {{ resultado }}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
